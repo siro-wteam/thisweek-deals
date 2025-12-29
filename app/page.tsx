@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import './globals.css'
 
@@ -81,18 +82,24 @@ export default async function Home() {
               {deals.map((deal: any) => (
                 <div key={deal.id} className="card">
                   {deal.image_url && (
-                    <img
+                    <Image
                       src={deal.image_url}
                       alt={deal.title}
+                      width={400}
+                      height={192}
                       className="w-full h-48 object-cover rounded-lg mb-4"
+                      unoptimized
                     />
                   )}
                   <div className="flex items-center gap-2 mb-2">
                     {deal.stores?.logo_url && (
-                      <img
+                      <Image
                         src={deal.stores.logo_url}
                         alt={deal.stores.name}
+                        width={24}
+                        height={24}
                         className="w-6 h-6 rounded"
+                        unoptimized
                       />
                     )}
                     <span className="text-sm text-gray-600">
